@@ -1,0 +1,22 @@
+name: Jira Close Issues
+description: Closes Jira issues based on PR title
+inputs:
+  jiraBaseUrl:
+    description: The base URL of the Jira server.
+    required: true
+  jiraEmail:
+    description: The email of the user to authenticate as.
+    required: true
+  jiraApiToken:
+    description: The API token for the user to authenticated as.
+    required: true
+  transitionId:
+    description: The transition to apply to issues mentioned in the PR title.
+    required: true
+  failOnApiError:
+    description: |
+        If false then Jira API error responses are ignored, e.g. when it is not possible to
+        transition the issue.
+runs:
+  using: node12
+  main: ./dist/index.js
